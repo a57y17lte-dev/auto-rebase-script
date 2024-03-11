@@ -4,13 +4,21 @@ on:
   schedule:
     - cron: '0 0 * * *'
 
+   
 jobs:
   build:
     strategy:
       matrix:
-        branch: [lineage-17.1, lineage-18.1]
+        branch: [lineage-21.0]
+
+    env:
+      org: "a57y17lte-dev"
+      upstream_org: "LineageOS"
+      repo:  "android_build"
+      branch: "${{ matrix.branch }}"
+
     name: Automatic rebase
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
     - name: Install dependencies
       run: |
@@ -20,9 +28,9 @@ jobs:
       run: |
         git config --global user.name "${GITHUB_USER}"
         git config --global user.email "${GITHUB_EMAIL}"
-        git clone https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/Mint-OS/android_build.git -b ${{ matrix.branch }}
-        cd android_build
-        git fetch https://github.com/LineageOS/android_build.git ${{ matrix.branch }}
+        git clone https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/$org/$repo -b $branch
+        cd $repo
+        git fetch https://github.com/upstream_org/android_build.git $branch
         git rebase FETCH_HEAD
         git push -f
       env:
