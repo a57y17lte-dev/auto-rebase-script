@@ -8,7 +8,7 @@ jobs:
   build:
     strategy:
       matrix:
-        branch: [lineage-17.1, lineage-18.1]
+        branch: [lineage-21.0]
     name: Automatic rebase
     runs-on: ubuntu-20.04
     steps:
@@ -20,9 +20,9 @@ jobs:
       run: |
         git config --global user.name "${GITHUB_USER}"
         git config --global user.email "${GITHUB_EMAIL}"
-        git clone https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/Mint-OS/android_build.git -b ${{ matrix.branch }}
-        cd android_build
-        git fetch https://github.com/LineageOS/android_build.git ${{ matrix.branch }}
+        git clone https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/a57y17lte-dev/android_frameworks_base.git -b ${{ matrix.branch }}
+        cd android_frameworks_base
+        git fetch https://github.com/LineageOS/android_frameworks_base.git ${{ matrix.branch }}
         git rebase FETCH_HEAD
         git push -f
       env:
