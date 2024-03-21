@@ -1,6 +1,7 @@
 name: Rebase
 
 on:
+  workflow-dispatch:
   schedule:
     - cron: '0 0 * * *'
 
