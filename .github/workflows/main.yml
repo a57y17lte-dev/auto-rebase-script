@@ -22,7 +22,7 @@ jobs:
         git config --global user.name "${{ secrets.USERNAME }}"
         git config --global user.email "${{ secrets.EMAIL }}"
         git clone https://"${{ secrets.USERNAME }}":"${{ secrets.TOKEN }}"@github.com/a57y17lte-dev/android_vendor_lineage.git -b ${{ matrix.branch }}
-        cd android_frameworks_base
+        cd android_vendor_lineage
         git fetch https://github.com/LineageOS/android_vendor_lineage.git ${{ matrix.branch }}
         git rebase FETCH_HEAD
         git push -f
