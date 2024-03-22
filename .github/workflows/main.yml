@@ -21,8 +21,8 @@ jobs:
       run: |
         git config --global user.name "${{ secrets.USERNAME }}"
         git config --global user.email "${{ secrets.EMAIL }}"
-        git clone https://"${{ secrets.USERNAME }}":"${{ secrets.TOKEN }}"@github.com/a57y17lte-dev/android_frameworks_base.git -b ${{ matrix.branch }}
-        cd android_frameworks_base
-        git fetch https://github.com/LineageOS/android_frameworks_base.git ${{ matrix.branch }}
+        git clone https://"${{ secrets.USERNAME }}":"${{ secrets.TOKEN }}"@github.com/a57y17lte-dev/android_frameworks_libs_net.git -b ${{ matrix.branch }}
+        cd android_frameworks_libs_net
+        git fetch https://github.com/LineageOS-UL/android_frameworks_libs_net.git ${{ matrix.branch }}
         git rebase FETCH_HEAD
         git push -f
