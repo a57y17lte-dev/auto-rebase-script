@@ -8,8 +8,8 @@ on:
 jobs:
   build:
     strategy:
-      matrix: android_hardware_samsung
-        branch: [android_hardware_samsung]
+      matrix:
+        branch: [lineage-21]
     name: Automatic rebase
     runs-on: ubuntu-20.04
     steps:
