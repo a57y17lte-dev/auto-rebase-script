@@ -28,9 +28,9 @@ jobs:
       run: |
         git config --global user.name "${GITHUB_USER}"
         git config --global user.email "${GITHUB_EMAIL}"
-        git clone https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/$org/$repo -b $branch
-        cd $repo
-        git fetch https://github.com/upstream_org/android_build.git $branch
+        git clone https://"${GITHUB_USER}":"${GITHUB_TOKEN}"@github.com/a57y17lte-dev/android_frameworks_base -b $branch
+        cd android_frameworks_base
+        git fetch https://github.com/LineageOS/android_frameworks_base.git $branch
         git rebase FETCH_HEAD
         git push -f
       env:
